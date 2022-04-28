@@ -29,7 +29,7 @@ function initEvents() {
 
 export default function ContextWrapper(props) {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
-  const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
+  // const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
   const [daySelected, setDaySelected] = useState(dayjs());
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -69,11 +69,11 @@ export default function ContextWrapper(props) {
     });
   }, [savedEvents]);
 
-  useEffect(() => {
-    if (smallCalendarMonth !== null) {
-      setMonthIndex(smallCalendarMonth);
-    }
-  }, [smallCalendarMonth]);
+  // useEffect(() => {
+  //   if (smallCalendarMonth !== null) {
+  //     setMonthIndex(smallCalendarMonth);
+  //   }
+  // }, [smallCalendarMonth]);
 
   useEffect(() => {
     if (!showEventModal) {
@@ -92,8 +92,8 @@ export default function ContextWrapper(props) {
       value={{
         monthIndex,
         setMonthIndex,
-        smallCalendarMonth,
-        setSmallCalendarMonth,
+        //smallCalendarMonth,
+        // setSmallCalendarMonth,
         daySelected,
         setDaySelected,
         showEventModal,
