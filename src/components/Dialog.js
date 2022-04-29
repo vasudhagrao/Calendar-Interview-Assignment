@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 export default function Dialog({
   dialog,
   setDialog,
@@ -87,11 +85,7 @@ export default function Dialog({
                       <div>Description: {_d.description}</div>
                       <button
                         onClick={() =>
-                          setData(
-                            data.filter(
-                              (d) => d.title !== _d.title && d.date !== _d.date
-                            )
-                          )
+                          setData(data.filter((d) => d.title !== _d.title))
                         }
                       >
                         Delete
@@ -101,7 +95,7 @@ export default function Dialog({
                 </div>
 
                 <div>
-                  {i == offset && (
+                  {i > offset && (
                     <button
                       className="show-more-btn"
                       onClick={() =>

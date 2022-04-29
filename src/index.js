@@ -1,7 +1,5 @@
 import { StrictMode } from "react";
-import * as ReactDOM from "react-dom/client";
-import ReactDOM from "react-dom";
-import React, { Component } from "react";
+import { createRoot } from "react-dom/client";
 
 import App from "./App";
 

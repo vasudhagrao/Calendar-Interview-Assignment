@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import React, { Component } from "react";
 
 export default function CurrentMonth({ date, data, setDialog }) {
   return (
@@ -31,14 +30,14 @@ export default function CurrentMonth({ date, data, setDialog }) {
             gridColumn:
               dayjs(
                 `${date.get("month") + 1}-${i + 1}-${date.get("year")}`
-              ).get("day") + 1,
+              ).get("day") + 1
           }}
           onClick={() => {
             setDialog({
               open: true,
               _date: dayjs(
                 `${date.get("month") + 1}-${i + 2}-${date.get("year")}`
-              ).toString(),
+              ).toString()
             });
           }}
         >
