@@ -1,5 +1,15 @@
 .App {
-  text-align: center;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.App .calendar {
+  background-color: #efefef;
+  padding: 1rem;
+  width: 340px;
+  display: grid;
+  gap: 1rem;
 }
 
 .App-logo {

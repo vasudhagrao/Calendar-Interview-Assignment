@@ -1,8 +1,9 @@
 import { useState } from "react";
 import dayjs from "dayjs";
-import "./index.css";
+import "./Calendar.css";
+import Eventbox from "./Eventbox";
 
-export default function App() {
+export default function Calendar() {
   const [date, setDate] = useState(dayjs());
   const [dialog, setDialog] = useState({
     open: false,
@@ -71,9 +72,8 @@ export default function App() {
   )
     .slice(0, 6 - _endDay)
     .map((d) => d + 1);
-
   return (
-    <div className="App">
+    <div className="Calendar">
       <section className="calendar">
         <div className="year">{date.get("year")}</div>
         <div className="month">
@@ -199,151 +199,6 @@ export default function App() {
           })}
         </div>
       </section>
-
-      <dialog
-        open={dialog.open}
-        style={{
-          maxWidth: 400,
-          width: "100%",
-          marginInline: "auto",
-        }}
-      >
-        <div className="dialogHeader">
-          <strong>Add an event</strong>
-          <button
-            onClick={() => {
-              setDialog({ open: false, _date: null });
-              setOffset(3);
-            }}
-          >
-            close
-          </button>
-        </div>
-
-        <div className="events">
-          {data
-            ?.filter((d) => d.date === dialog._date)
-            .map((_d, i) => {
-              return (
-                <>
-                  <div>
-                    {i < offset && (
-                      <details key={i}>
-                        <summary>
-                          {_d.title}{" "}
-                          <span className="timeSelector">
-                            {_d._type}
-                          </span>
-                          <button
-                            className="delete"
-                            onClick={() => deleteEvent(i)}
-                          >
-                            delete
-                          </button>
-                        </summary>
-                        <p style={{ display: "flex", gap: "1rem" }}>
-                          <div>Start: {_d.startTime}</div>
-                          <div>End: {_d.endTime}</div>
-                        </p>
-
-                        <div>Description: {_d.description}</div>
-                      </details>
-                    )}
-                  </div>
-
-                  <div>
-                    {i == offset && (
-                      <button
-                        className="show-more-btn"
-                        onClick={() =>
-                          setOffset(
-                            data?.filter(
-                              (d) => d.date === dialog._date
-                            ).length
-                          )
-                        }
-                      >
-                        Show more
-                      </button>
-                    )}
-                  </div>
-                </>
-              );
-            })}
-        </div>
-
-        <form className="dialogForm" onSubmit={handleEventAddition}>
-          <input
-            placeholder="event title"
-            value={event.title}
-            onChange={(e) =>
-              setEvent({ ...event, title: e.target.value })
-            }
-            required={true}
-          />
-          <textarea
-            placeholder="event description"
-            rows={3}
-            value={event.description}
-            onChange={(e) =>
-              setEvent({ ...event, description: e.target.value })
-            }
-          ></textarea>
-          <div className="radio-group">
-            <label htmlFor="event">
-              <input
-                id="event"
-                type="radio"
-                value="event"
-                checked={event._type === "event"}
-                onChange={(e) =>
-                  setEvent({ ...event, _type: e.target.value })
-                }
-              />
-              <span>Event</span>
-            </label>
-            <label htmlFor="reminder">
-              <input
-                id="reminder"
-                type="radio"
-                value="reminder"
-                checked={event._type === "reminder"}
-                onChange={(e) =>
-                  setEvent({ ...event, _type: e.target.value })
-                }
-              />
-              <span>Reminder</span>
-            </label>
-          </div>
-
-          <div className="time-group">
-            <label htmlFor="startTime">
-              <span>Start time</span>
-              <input
-                id="startTime"
-                type="time"
-                value={event.startTime}
-                onChange={(e) =>
-                  setEvent({ ...event, startTime: e.target.value })
-                }
-              />
-            </label>
-            <label htmlFor="endTime">
-              <span>End time</span>
-              <input
-                id="endTime"
-                type="time"
-                value={event.endTime}
-                onChange={(e) =>
-                  setEvent({ ...event, endTime: e.target.value })
-                }
-              />
-            </label>
-          </div>
-
-          <button type="submit">Add event</button>
-        </form>
-      </dialog>
     </div>
   );
 }
