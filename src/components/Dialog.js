@@ -1,3 +1,5 @@
+import React, { Component } from "react";
+
 export default function Dialog({
   dialog,
   setDialog,

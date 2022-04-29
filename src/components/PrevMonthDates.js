@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import React, { Component } from "react";
 
 export default function PrevMonthDates({ date }) {
   // for handling previous month dates in current calendar
@@ -24,7 +25,7 @@ export default function PrevMonthDates({ date }) {
               gridColumn:
                 dayjs(
                   `${_prevMonth.month() + 1}-${d}-${_prevMonth.year()}`
-                ).day() + 1
+                ).day() + 1,
             }}
           >
             {d}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React, { Component } from "react";
 import dayjs from "dayjs";
 import "./styles.css";
 import Dialog from "./components/Dialog";
@@ -11,7 +12,7 @@ export default function App() {
   const [date, setDate] = useState(dayjs());
   const [dialog, setDialog] = useState({
     open: false,
-    _date: null
+    _date: null,
   });
   const [data, setData] = useState([]);
 
@@ -21,7 +22,7 @@ export default function App() {
     description: "",
     _type: "",
     startTime: null,
-    endTime: null
+    endTime: null,
   });
 
   const [offset, setOffset] = useState(3);

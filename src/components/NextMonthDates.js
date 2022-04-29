@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import React, { Component } from "react";
 
 export default function NextMonthDates({ date }) {
   // for handling next month dates in current calendar
@@ -24,7 +25,7 @@ export default function NextMonthDates({ date }) {
               gridColumn:
                 dayjs(
                   `${_nextMonth.month() + 1}-${d}-${_nextMonth.year()}`
-                ).day() + 1
+                ).day() + 1,
             }}
           >
             {d}
